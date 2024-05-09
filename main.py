@@ -1,7 +1,8 @@
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
-
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import Qt
 #UI파일 연결
 #단, UI파일은 Python 코드 파일과 같은 디렉토리에 위치해야한다.
 form_class = uic.loadUiType("./ui/untitled.ui")[0]
@@ -11,6 +12,10 @@ class WindowClass(QMainWindow, form_class) :
     def __init__(self) :
         super().__init__()
         self.setupUi(self)
+        self.clearbaner()
+        
+    def clearbaner(self):
+        self.setWindowFlag(Qt.FramelessWindowHint)
 
 if __name__ == "__main__" :
     #QApplication : 프로그램을 실행시켜주는 클래스
